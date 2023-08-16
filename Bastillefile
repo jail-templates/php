@@ -1,4 +1,4 @@
-PKG pkg install php83 php83-mbstring php83-zip php83-zlib php83-curl php83-gd php83-xml php83-xmlreader php83-xmlwriter php83-pdo_mysql php83-mysqli php83-dom php83-exif php83-fileinfo php83-filter php83-iconv php83-ctype php83-posix php83-session php83-simplexml php83-intl php83-bcmath php83-gmp php83-pecl-imagick php83-bz2 php83-opcache php83-pecl-apcu php83-pecl-redis php83-sysvsem
+PKG php83 php83-mbstring php83-zip php83-zlib php83-curl php83-gd php83-xml php83-xmlreader php83-xmlwriter php83-pdo_mysql php83-mysqli php83-dom php83-exif php83-fileinfo php83-filter php83-iconv php83-ctype php83-posix php83-session php83-simplexml php83-intl php83-bcmath php83-gmp php83-pecl-imagick php83-bz2 php83-opcache php83-pecl-apcu php83-pecl-redis php83-sysvsem
 CP usr /
 CMD cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
 CMD sed -i '' 's%listen = 127.0.0.1:9000%listen = /tmp/php-fpm.sock%g' /usr/local/etc/php-fpm.d/www.conf
