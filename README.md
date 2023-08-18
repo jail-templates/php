@@ -19,6 +19,9 @@ bastille bootstrap https://github.com/jail-templates/php
 bastille template $JAIL jail-templates/php
 ```
 
+## Upgrading PHP
+Another PHP template can be applied on a jail to upgrade or downgrade the PHP version. For example: $JAIL had the `php-8.0` template applied to it and by applying the `php-8.2` template the PHP version upgrades to 8.2. Make sure to backup your custom settings in `/usr/local/etc/php/custom.ini` though because they will be overwritten to the default settings as well.
+
 ## Support
 Templates will be maintained until their respective software version is end-of-life. Repositories will then be archived and removed from any meta-templates.
 
