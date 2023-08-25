@@ -1,10 +1,28 @@
+
+########################################################################################
+# Copyright (c) 2023, Nozel, Sebas Veeke. All rights reserved.
+#
+# Licenced under a 3-Clause BSD License (https://opensource.org/license/bsd-3-clause).
+#
+# Contact:
+# > e-mail      mail@nozel.org
+# > GitHub      jail-templates
+########################################################################################
+
+# install required packages
 PKG php82 php82-mbstring php82-zip php82-zlib php82-curl php82-gd php82-xml php82-xmlreader php82-xmlwriter php82-pdo_mysql php82-mysqli php82-dom php82-exif php82-fileinfo php82-filter php82-iconv php82-ctype php82-posix php82-session php82-simplexml php82-intl php82-bcmath php82-gmp php82-pecl-imagick php82-bz2 php82-opcache php82-pecl-apcu php82-pecl-redis php82-sysvsem
+
+# copy files
 CP usr /
+
+# configure php-fpm
 CMD cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
 CMD sed -i '' 's%listen = 127.0.0.1:9000%listen = /tmp/php-fpm.sock%g' /usr/local/etc/php-fpm.d/www.conf
 CMD sed -i '' 's%;listen.owner = www%listen.owner = www%g' /usr/local/etc/php-fpm.d/www.conf
 CMD sed -i '' 's%;listen.group = www%listen.group = www%g' /usr/local/etc/php-fpm.d/www.conf
 CMD printf '<?php phpinfo(); ?>\n\n' > /usr/local/www/info.php
+
+# enable and start php-fpm
 SYSRC php_fpm_enable=YES
 SERVICE php-fpm start
 SERVICE apache24 restart
