@@ -17,9 +17,10 @@ CP usr /
 
 # configure php-fpm
 CMD cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
-CMD sed -i '' 's%listen = 127.0.0.1:9000%listen = /tmp/php-fpm.sock%g' /usr/local/etc/php-fpm.d/www.conf
+CMD sed -i '' 's%listen = 127.0.0.1:9000%listen = /var/run/php-fpm.sock%g' /usr/local/etc/php-fpm.d/www.conf
 CMD sed -i '' 's%;listen.owner = www%listen.owner = www%g' /usr/local/etc/php-fpm.d/www.conf
 CMD sed -i '' 's%;listen.group = www%listen.group = www%g' /usr/local/etc/php-fpm.d/www.conf
+CMD sed -i '' 's%;listen.mode = 0660%listen.mode = 0660%g' /usr/local/etc/php-fpm.d/www.conf
 CMD printf '<?php phpinfo(); ?>\n\n' > /usr/local/www/info.php
 
 # enable and start php-fpm
